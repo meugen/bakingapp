@@ -17,12 +17,8 @@ public class IngredientReadable implements JsonReadable<Ingredient> {
     private static final String FIELD_MEASURE = "measure";
     private static final String FIELD_INGREDIENT = "ingredient";
 
-    private final ReadableUtils utils;
-
     @Inject
-    public IngredientReadable(final ReadableUtils utils) {
-        this.utils = utils;
-    }
+    public IngredientReadable() {}
 
     @Override
     public Ingredient readJson(final JsonReader reader) throws IOException {
@@ -45,9 +41,9 @@ public class IngredientReadable implements JsonReadable<Ingredient> {
         }
         reader.endObject();
 
-        utils.checkFieldNotNull(quantity, FIELD_QUANTITY);
-        utils.checkFieldNotNull(measure, FIELD_MEASURE);
-        utils.checkFieldNotNull(ingredient, FIELD_INGREDIENT);
+        ReadableUtils.checkFieldNotNull(quantity, FIELD_QUANTITY);
+        ReadableUtils.checkFieldNotNull(measure, FIELD_MEASURE);
+        ReadableUtils.checkFieldNotNull(ingredient, FIELD_INGREDIENT);
 
         final Ingredient result = new Ingredient();
         result.setQuantity(quantity);

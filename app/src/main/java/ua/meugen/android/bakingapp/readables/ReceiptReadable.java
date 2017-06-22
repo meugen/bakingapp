@@ -23,16 +23,13 @@ public class ReceiptReadable implements JsonReadable<Receipt> {
     private static final String FIELD_SERVINGS = "servings";
     private static final String FIELD_IMAGE = "image";
 
-    private final ReadableUtils utils;
     private final JsonReadable<List<Ingredient>> ingredientsReadable;
     private final JsonReadable<List<Step>> stepsReadable;
 
     @Inject
     public ReceiptReadable(
-            final ReadableUtils utils,
             final JsonReadable<List<Ingredient>> ingredientsReadable,
             final JsonReadable<List<Step>> stepsReadable) {
-        this.utils = utils;
         this.ingredientsReadable = ingredientsReadable;
         this.stepsReadable = stepsReadable;
     }
@@ -67,12 +64,12 @@ public class ReceiptReadable implements JsonReadable<Receipt> {
         }
         reader.endObject();
 
-        utils.checkFieldNotNull(id, FIELD_ID);
-        utils.checkFieldNotNull(name, FIELD_NAME);
-        utils.checkFieldNotNull(ingredients, FIELD_INGREDIENTS);
-        utils.checkFieldNotNull(steps, FIELD_STEPS);
-        utils.checkFieldNotNull(servings, FIELD_SERVINGS);
-        utils.checkFieldNotNull(image, FIELD_IMAGE);
+        ReadableUtils.checkFieldNotNull(id, FIELD_ID);
+        ReadableUtils.checkFieldNotNull(name, FIELD_NAME);
+        ReadableUtils.checkFieldNotNull(ingredients, FIELD_INGREDIENTS);
+        ReadableUtils.checkFieldNotNull(steps, FIELD_STEPS);
+        ReadableUtils.checkFieldNotNull(servings, FIELD_SERVINGS);
+        ReadableUtils.checkFieldNotNull(image, FIELD_IMAGE);
 
         final Receipt result = new Receipt();
         result.setId(id);

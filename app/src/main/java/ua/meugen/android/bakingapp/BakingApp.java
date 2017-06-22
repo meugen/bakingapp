@@ -3,8 +3,9 @@ package ua.meugen.android.bakingapp;
 import android.app.Application;
 import android.content.Context;
 
-import ua.meugen.android.bakingapp.injections.AppComponent;
-import ua.meugen.android.bakingapp.injections.DaggerAppComponent;
+import ua.meugen.android.bakingapp.injections.components.AppComponent;
+import ua.meugen.android.bakingapp.injections.components.DaggerAppComponent;
+import ua.meugen.android.bakingapp.injections.modules.AppModule;
 
 public class BakingApp extends Application {
 
@@ -21,7 +22,9 @@ public class BakingApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        appComponent = DaggerAppComponent.create();
+        appComponent = DaggerAppComponent.builder()
+                .appModule(new AppModule(this))
+                .build();
     }
 
     public AppComponent getAppComponent() {

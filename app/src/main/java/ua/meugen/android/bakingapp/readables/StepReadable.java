@@ -18,12 +18,8 @@ public class StepReadable implements JsonReadable<Step> {
     private static final String FIELD_VIDEO_URL = "videoURL";
     private static final String FIELD_THUMBNAIL_URL = "thumbnailURL";
 
-    private final ReadableUtils utils;
-
     @Inject
-    public StepReadable(final ReadableUtils utils) {
-        this.utils = utils;
-    }
+    public StepReadable() {}
 
     @Override
     public Step readJson(final JsonReader reader) throws IOException {
@@ -52,11 +48,11 @@ public class StepReadable implements JsonReadable<Step> {
         }
         reader.endObject();
 
-        utils.checkFieldNotNull(id, FIELD_ID);
-        utils.checkFieldNotNull(shortDescription, FIELD_SHORT_DESCRIPTION);
-        utils.checkFieldNotNull(description, FIELD_DESCRIPTION);
-        utils.checkFieldNotNull(videoURL, FIELD_VIDEO_URL);
-        utils.checkFieldNotNull(thumbnailURL, FIELD_THUMBNAIL_URL);
+        ReadableUtils.checkFieldNotNull(id, FIELD_ID);
+        ReadableUtils.checkFieldNotNull(shortDescription, FIELD_SHORT_DESCRIPTION);
+        ReadableUtils.checkFieldNotNull(description, FIELD_DESCRIPTION);
+        ReadableUtils.checkFieldNotNull(videoURL, FIELD_VIDEO_URL);
+        ReadableUtils.checkFieldNotNull(thumbnailURL, FIELD_THUMBNAIL_URL);
 
         final Step result = new Step();
         result.setId(id);
