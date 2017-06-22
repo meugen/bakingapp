@@ -1,7 +1,9 @@
-package ua.meugen.android.bakingapp;
+package ua.meugen.android.bakingapp.activities;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+
+import ua.meugen.android.bakingapp.R;
 
 public class MainActivity extends AppCompatActivity {
 
