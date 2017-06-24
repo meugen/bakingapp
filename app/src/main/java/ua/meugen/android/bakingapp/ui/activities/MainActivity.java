@@ -1,12 +1,9 @@
-package ua.meugen.android.bakingapp.activities;
+package ua.meugen.android.bakingapp.ui.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import javax.inject.Inject;
-
-import ua.meugen.android.bakingapp.BakingApp;
 import ua.meugen.android.bakingapp.R;
 import ua.meugen.android.bakingapp.services.StoreReceiptsService;
 

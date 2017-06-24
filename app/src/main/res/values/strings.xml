@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Baking App</string>
+
+    <string name="cd_next">Next</string>
+    <string name="tools_item_receipt_name">Nutella Pie</string>
+    <string name="tools_item_receipt_servings">Servings: 8</string>
+
+    <string name="item_receipt_servings" formatted="true">Servings: %d</string>
 </resources>

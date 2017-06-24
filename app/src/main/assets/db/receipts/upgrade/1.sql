@@ -1,7 +1,7 @@
 CREATE TABLE receipts (
     _id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     name VARCHAR(50) NOT NULL,
-    servings VARCHAR(200) NOT NULL,
+    servings INTEGER NOT NULL,
     image VARCHAR(200) NOT NULL
 );
 

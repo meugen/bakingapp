@@ -8,7 +8,7 @@ public class Receipt {
     private String name;
     private List<Ingredient> ingredients;
     private List<Step> steps;
-    private String servings;
+    private int servings;
     private String image;
 
     public int getId() {
@@ -43,11 +43,11 @@ public class Receipt {
         this.steps = steps;
     }
 
-    public String getServings() {
+    public int getServings() {
         return servings;
     }
 
-    public void setServings(final String servings) {
+    public void setServings(final int servings) {
         this.servings = servings;
     }
 

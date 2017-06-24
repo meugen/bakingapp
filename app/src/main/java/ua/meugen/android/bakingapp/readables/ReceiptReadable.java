@@ -40,7 +40,7 @@ public class ReceiptReadable implements JsonReadable<Receipt> {
         String name = null;
         List<Ingredient> ingredients = null;
         List<Step> steps = null;
-        String servings = null;
+        Integer servings = null;
         String image = null;
 
         reader.beginObject();
@@ -55,7 +55,7 @@ public class ReceiptReadable implements JsonReadable<Receipt> {
             } else if (FIELD_STEPS.equals(_name)) {
                 steps = stepsReadable.readJson(reader);
             } else if (FIELD_SERVINGS.equals(_name)) {
-                servings = reader.nextString();
+                servings = reader.nextInt();
             } else if (FIELD_IMAGE.equals(_name)) {
                 image = reader.nextString();
             } else {

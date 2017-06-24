@@ -2,7 +2,6 @@ package ua.meugen.android.bakingapp.services;
 
 import android.app.IntentService;
 import android.content.Intent;
-import android.content.Context;
 import android.support.annotation.Nullable;
 
 import javax.inject.Inject;

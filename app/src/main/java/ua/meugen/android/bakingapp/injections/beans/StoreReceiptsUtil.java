@@ -1,6 +1,5 @@
 package ua.meugen.android.bakingapp.injections.beans;
 
-import android.content.ContentProvider;
 import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;

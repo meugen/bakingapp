@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable name="name" type="String"/>
+        <variable name="servings" type="int"/>
+    </data>
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/listPreferredItemHeight">
+
+        <android.support.constraint.Guideline
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.5"
+            android:id="@+id/guideline"/>
+
+        <ImageView
+            android:layout_width="?attr/listPreferredItemHeight"
+            android:layout_height="0dp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:src="@drawable/ic_navigate_next_black_24dp"
+            android:contentDescription="@string/cd_next"
+            android:id="@+id/next_view"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="@dimen/item_padding_vertical"
+            app:layout_constraintBottom_toBottomOf="@id/guideline"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginLeft="@dimen/item_padding_horizontal"
+            app:layout_constraintRight_toLeftOf="@id/next_view"
+            android:layout_marginRight="@dimen/item_padding_horizontal"
+            android:id="@+id/name_view"
+            android:textAppearance="?attr/textAppearanceListItem"
+            tools:text="@string/tools_item_receipt_name"
+            android:text="@{name}"
+            android:gravity="center_vertical"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="@id/guideline"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="@dimen/item_padding_vertical"
+            app:layout_constraintLeft_toLeftOf="@id/name_view"
+            app:layout_constraintRight_toRightOf="@id/name_view"
+            android:id="@+id/servings_view"
+            android:textAppearance="?attr/textAppearanceListItemSmall"
+            tools:text="@string/tools_item_receipt_servings"
+            android:text="@{@string/item_receipt_servings(servings)}"
+            android:gravity="center_vertical"/>
+    </android.support.constraint.ConstraintLayout>
+</layout>

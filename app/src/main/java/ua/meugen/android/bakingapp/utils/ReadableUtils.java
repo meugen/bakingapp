@@ -2,10 +2,6 @@ package ua.meugen.android.bakingapp.utils;
 
 import java.io.IOException;
 
-import javax.inject.Inject;
-
-import ua.meugen.android.bakingapp.injections.Model;
-
 public class ReadableUtils {
 
     private ReadableUtils() {}
