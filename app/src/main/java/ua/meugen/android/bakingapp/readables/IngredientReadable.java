@@ -22,7 +22,7 @@ public class IngredientReadable implements JsonReadable<Ingredient> {
 
     @Override
     public Ingredient readJson(final JsonReader reader) throws IOException {
-        Integer quantity = null;
+        Double quantity = null;
         String measure = null;
         String ingredient = null;
 
@@ -30,7 +30,7 @@ public class IngredientReadable implements JsonReadable<Ingredient> {
         while (reader.hasNext()) {
             final String name = reader.nextName();
             if (FIELD_QUANTITY.equals(name)) {
-                quantity = reader.nextInt();
+                quantity = reader.nextDouble();
             } else if (FIELD_MEASURE.equals(name)) {
                 measure = reader.nextString();
             } else if (FIELD_INGREDIENT.equals(name)) {

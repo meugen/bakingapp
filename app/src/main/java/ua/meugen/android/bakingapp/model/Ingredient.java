@@ -2,15 +2,15 @@ package ua.meugen.android.bakingapp.model;
 
 public class Ingredient {
 
-    private int quantity;
+    private double quantity;
     private String measure;
     private String ingredient;
 
-    public int getQuantity() {
+    public double getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(final int quantity) {
+    public void setQuantity(final double quantity) {
         this.quantity = quantity;
     }
 

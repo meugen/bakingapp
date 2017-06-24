@@ -12,6 +12,7 @@ public interface ReceiptsContract {
     interface ReceiptColumns extends BaseColumns {
 
         String PATH = "receipts";
+        String TABLE = "receipts";
 
         Uri URI = BASE_URI.buildUpon().appendPath(PATH).build();
 
@@ -23,6 +24,7 @@ public interface ReceiptsContract {
     interface IngredientColumns extends BaseColumns {
 
         String PATH = "ingredients";
+        String TABLE = "ingredients";
 
         Uri URI = BASE_URI.buildUpon().appendPath(PATH).build();
 
@@ -35,10 +37,10 @@ public interface ReceiptsContract {
     interface StepColumns extends BaseColumns {
 
         String PATH = "steps";
+        String TABLE = "steps";
 
         Uri URI = BASE_URI.buildUpon().appendPath(PATH).build();
 
-        String COLUMN_ID = "id";
         String COLUMN_RECEIPT_ID = "receipt_id";
         String COLUMN_SHORT_DESCRIPTION = "short_description";
         String COLUMN_DESCRIPTION = "description";

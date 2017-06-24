@@ -49,7 +49,7 @@ public class ReceiptReadable implements JsonReadable<Receipt> {
             if (FIELD_ID.equals(_name)) {
                 id = reader.nextInt();
             } else if (FIELD_NAME.equals(_name)) {
-                name = reader.nextName();
+                name = reader.nextString();
             } else if (FIELD_INGREDIENTS.equals(_name)) {
                 ingredients = ingredientsReadable.readJson(reader);
             } else if (FIELD_STEPS.equals(_name)) {

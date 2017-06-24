@@ -4,6 +4,7 @@ import java.util.List;
 
 import dagger.Component;
 import ua.meugen.android.bakingapp.injections.Model;
+import ua.meugen.android.bakingapp.injections.beans.FetchReceiptsUtil;
 import ua.meugen.android.bakingapp.injections.modules.ListModelModule;
 import ua.meugen.android.bakingapp.injections.modules.ModelModule;
 import ua.meugen.android.bakingapp.model.Receipt;
@@ -13,5 +14,5 @@ import ua.meugen.android.bakingapp.utils.JsonReadable;
 @Model
 public interface ModelComponent {
 
-    JsonReadable<List<Receipt>> receiptsReadable();
+    FetchReceiptsUtil fetchReceiptsUtil();
 }
