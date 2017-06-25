@@ -10,7 +10,8 @@
     </data>
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="?attr/listPreferredItemHeight">
+        android:layout_height="?attr/listPreferredItemHeight"
+        android:background="?attr/selectableItemBackground">
 
         <android.support.constraint.Guideline
             android:layout_width="wrap_content"
@@ -54,7 +55,7 @@
             app:layout_constraintLeft_toLeftOf="@id/name_view"
             app:layout_constraintRight_toRightOf="@id/name_view"
             android:id="@+id/servings_view"
-            android:textAppearance="?attr/textAppearanceListItemSmall"
+            android:textAppearance="?android:attr/textAppearanceSmall"
             tools:text="@string/tools_item_receipt_servings"
             android:text="@{@string/item_receipt_servings(servings)}"
             android:gravity="center_vertical"/>

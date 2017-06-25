@@ -1,12 +1,14 @@
 package ua.meugen.android.bakingapp.ui.fragments;
 
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
+import android.support.v7.widget.DividerItemDecoration;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,6 +37,8 @@ public class ReceiptsListFragment extends Fragment {
             @Nullable final Bundle savedInstanceState) {
         binding = FragmentReceiptsListBinding.inflate(
                 inflater, container, false);
+        binding.recycler.addItemDecoration(new DividerItemDecoration(
+                getContext(), DividerItemDecoration.VERTICAL));
         return binding.getRoot();
     }
 
@@ -48,6 +52,8 @@ public class ReceiptsListFragment extends Fragment {
     private void setupAdapter(final Cursor cursor) {
         if (adapter == null) {
             adapter = new ReceiptsAdapter(getContext(), cursor);
+            adapter.setOnReceiptClickListener(
+                    (ReceiptsAdapter.OnReceiptClickListener) getActivity());
             binding.recycler.setAdapter(adapter);
         } else {
             adapter.swapCursor(cursor);
@@ -59,6 +65,7 @@ public class ReceiptsListFragment extends Fragment {
         @Override
         public Loader<Cursor> onCreateLoader(final int id, final Bundle args) {
             final String[] columns = new String[] {
+                    ReceiptsContract.ReceiptColumns._ID,
                     ReceiptsContract.ReceiptColumns.COLUMN_NAME,
                     ReceiptsContract.ReceiptColumns.COLUMN_SERVINGS };
             return new CursorLoader(getContext(),

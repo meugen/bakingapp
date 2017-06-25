@@ -2,11 +2,14 @@ package ua.meugen.android.bakingapp.ui.adapters;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import ua.meugen.android.bakingapp.databinding.ItemReceiptBinding;
+import ua.meugen.android.bakingapp.providers.ReceiptsContract;
 
 /**
  * @author meugen
@@ -17,6 +20,8 @@ public class ReceiptsAdapter extends RecyclerView.Adapter<BindingViewHolder<?, C
     private final LayoutInflater inflater;
     private Cursor cursor;
 
+    public OnReceiptClickListener onReceiptClickListener;
+
     public ReceiptsAdapter(final Context context, final Cursor cursor) {
         this.inflater = LayoutInflater.from(context);
         this.cursor = cursor;
@@ -25,6 +30,14 @@ public class ReceiptsAdapter extends RecyclerView.Adapter<BindingViewHolder<?, C
     public void swapCursor(final Cursor cursor) {
         this.cursor = cursor;
         notifyDataSetChanged();
+    }
+
+    public OnReceiptClickListener getOnReceiptClickListener() {
+        return onReceiptClickListener;
+    }
+
+    public void setOnReceiptClickListener(final OnReceiptClickListener onReceiptClickListener) {
+        this.onReceiptClickListener = onReceiptClickListener;
     }
 
     @Override
@@ -46,7 +59,18 @@ public class ReceiptsAdapter extends RecyclerView.Adapter<BindingViewHolder<?, C
         return cursor == null ? 0 : cursor.getCount();
     }
 
-    private class ReceiptItemViewHolder extends BindingViewHolder<ItemReceiptBinding, Cursor> {
+    private void callOnReceiptClick(final int id) {
+        if (onReceiptClickListener != null) {
+            final Uri uri = ReceiptsContract.ReceiptColumns.URI.buildUpon()
+                    .appendPath(Integer.toString(id)).build();
+            onReceiptClickListener.onReceiptClick(uri);
+        }
+    }
+
+    private class ReceiptItemViewHolder extends BindingViewHolder<ItemReceiptBinding, Cursor>
+            implements View.OnClickListener {
+
+        private int id;
 
         public ReceiptItemViewHolder(final ItemReceiptBinding binding) {
             super(binding);
@@ -54,8 +78,20 @@ public class ReceiptsAdapter extends RecyclerView.Adapter<BindingViewHolder<?, C
 
         @Override
         public void bind(final Cursor cursor) {
-            binding.setName(cursor.getString(0));
-            binding.setServings(cursor.getInt(1));
+            this.id = cursor.getInt(0);
+            binding.setName(cursor.getString(1));
+            binding.setServings(cursor.getInt(2));
+            itemView.setOnClickListener(this);
         }
+
+        @Override
+        public void onClick(final View view) {
+            callOnReceiptClick(id);
+        }
+    }
+
+    public interface OnReceiptClickListener {
+
+        void onReceiptClick(Uri uri);
     }
 }
